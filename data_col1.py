@@ -40,27 +40,27 @@ pred_list = pred_list.T
 for i in range(len(pred_list)):    
     pred_list.iloc[i] = pred_list.iloc[i]/datas
 
-data_train=pred_list
-from sklearn.cluster import KMeans
-from sklearn import preprocessing 
-data_train0 = preprocessing.scale(data_train) #标准化
-km = KMeans(n_clusters=6).fit(data_train0)
-data_train['cluster'] = km.labels_
-
-for junction_name, junction in wn.junctions(): 
-    b = junction.coordinates
-    
-a,b,c=[],[],[]
-for junction_name, junction in wn.junctions():    
-    a.append(junction.coordinates)
-
-for i in range(len(a)):
-    b.append(a[i][0])
-    c.append(a[i][1])
-
-import matplotlib.pyplot as plt
-colors = np.array(['red', 'green', 'blue', 'yellow','gold','maroon'])
-plt.scatter(b, c, c=colors[data_train["cluster"]])  
-wntr.graphics.plot_network(wn, node_attribute=pressure_at, node_size=30, 
-                        title='Pressure at 5 hours') 
+#data_train=pred_list
+#from sklearn.cluster import KMeans
+#from sklearn import preprocessing 
+#data_train0 = preprocessing.scale(data_train) #标准化
+#km = KMeans(n_clusters=6).fit(data_train0)
+#data_train['cluster'] = km.labels_
+#
+#for junction_name, junction in wn.junctions(): 
+#    b = junction.coordinates
+#    
+#a,b,c=[],[],[]
+#for junction_name, junction in wn.junctions():    
+#    a.append(junction.coordinates)
+#
+#for i in range(len(a)):
+#    b.append(a[i][0])
+#    c.append(a[i][1])
+#
+#import matplotlib.pyplot as plt
+#colors = np.array(['red', 'green', 'blue', 'yellow','gold','maroon'])
+#plt.scatter(b, c, c=colors[data_train["cluster"]])  
+#wntr.graphics.plot_network(wn, node_attribute=pressure_at, node_size=30, 
+#                        title='Pressure at 5 hours') 
     
